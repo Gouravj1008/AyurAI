@@ -1,0 +1,47 @@
+[
+  {
+    "message": "I feel dry skin and anxiety",
+    "dosha": "vata",
+    "response": "For Vata imbalance, prefer warm cooked meals, sesame oil massage, and regular sleep timings."
+  },
+  {
+    "message": "I have irregular digestion and bloating",
+    "dosha": "vata",
+    "response": "For Vata digestion issues, use warm soups, ginger tea, and avoid cold/raw foods."
+  },
+  {
+    "message": "I feel acidity and anger",
+    "dosha": "pitta",
+    "response": "For Pitta imbalance, choose cooling foods like cucumber, coconut water, and avoid spicy meals."
+  },
+  {
+    "message": "I get skin rashes in summer",
+    "dosha": "pitta",
+    "response": "For Pitta skin irritation, stay cool, hydrate well, and include aloe vera and bitter vegetables."
+  },
+  {
+    "message": "I feel heavy and sleepy",
+    "dosha": "kapha",
+    "response": "For Kapha imbalance, prefer light spicy meals, regular exercise, and avoid daytime naps."
+  },
+  {
+    "message": "I have slow metabolism and congestion",
+    "dosha": "kapha",
+    "response": "For Kapha congestion, take warm herbal teas, reduce dairy, and keep active daily."
+  },
+  {
+    "message": "How should I eat daily",
+    "dosha": "vata",
+    "response": "Vata routine: warm and grounding meals on a fixed schedule with gentle evening wind-down."
+  },
+  {
+    "message": "How should I eat daily",
+    "dosha": "pitta",
+    "response": "Pitta routine: cooling, less spicy meals and enough hydration during the day."
+  },
+  {
+    "message": "How should I eat daily",
+    "dosha": "kapha",
+    "response": "Kapha routine: light breakfast, warming spices, and avoid overeating at night."
+  }
+]

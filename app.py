@@ -63,17 +63,16 @@ def chat(request: Request, body: ChatRequest) -> ChatResponse:
         raise HTTPException(status_code=400, detail="dosha must be one of: vata, pitta, kapha")
 
     if request.app.state.model is None:
-        if request.app.state.model_load_error is None:
-            try:
-                model, class_to_response = _load_model()
-                request.app.state.model = model
-                request.app.state.class_to_response = class_to_response
-                request.app.state.model_load_error = None
-            except FileNotFoundError as exc:
-                request.app.state.model_load_error = str(exc)
-        raise HTTPException(status_code=503, detail=request.app.state.model_load_error)
+        try:
+            model, class_to_response = _load_model()
+            request.app.state.model = model
+            request.app.state.class_to_response = class_to_response
+            request.app.state.model_load_error = None
+        except FileNotFoundError as exc:
+            request.app.state.model_load_error = str(exc)
+            raise HTTPException(status_code=503, detail=request.app.state.model_load_error) from exc
 
-    prediction_class = int(request.app.state.model.predict([_feature_text(body.message, dosha)])[0])
+    prediction_class = request.app.state.model.predict([_feature_text(body.message, dosha)])[0]
     response = request.app.state.class_to_response.get(prediction_class)
     if response is None:
         raise HTTPException(status_code=500, detail="Model response mapping is invalid.")

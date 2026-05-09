@@ -24,7 +24,7 @@ def train_and_save_model(output_path: Path) -> Path:
     training_samples = _load_training_samples()
     features = [_feature_text(item["message"], item["dosha"]) for item in training_samples]
     responses = [item["response"] for item in training_samples]
-    class_to_response = dict(enumerate(sorted(set(responses))))
+    class_to_response = dict(enumerate(dict.fromkeys(responses)))
     response_to_class = {response: idx for idx, response in class_to_response.items()}
     labels = [response_to_class[item["response"]] for item in training_samples]
 

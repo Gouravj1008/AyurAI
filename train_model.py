@@ -24,6 +24,7 @@ def train_and_save_model(output_path: Path) -> Path:
     training_samples = _load_training_samples()
     features = [_feature_text(item["message"], item["dosha"]) for item in training_samples]
     responses = [item["response"] for item in training_samples]
+    # Preserve first-seen ordering so class IDs stay stable as long as response order is unchanged.
     unique_responses = list(dict.fromkeys(responses))
     class_to_response = dict(enumerate(unique_responses))
     response_to_class = {response: idx for idx, response in class_to_response.items()}

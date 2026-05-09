@@ -10,11 +10,12 @@ from pydantic import BaseModel, Field
 
 
 MODEL_PATH = Path(os.getenv("MODEL_PATH", "models/ayurai_model.joblib"))
+VALID_DOSHAS = {"vata", "pitta", "kapha"}
 
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1)
-    dosha: str = Field(min_length=1, description="One of: vata, pitta, kapha")
+    dosha: str = Field(min_length=1, description=f"One of: {', '.join(sorted(VALID_DOSHAS))}")
 
 
 class ChatResponse(BaseModel):
@@ -59,7 +60,7 @@ def health() -> dict[str, str]:
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: Request, body: ChatRequest) -> ChatResponse:
     dosha = body.dosha.strip().lower()
-    if dosha not in {"vata", "pitta", "kapha"}:
+    if dosha not in VALID_DOSHAS:
         raise HTTPException(status_code=400, detail="dosha must be one of: vata, pitta, kapha")
 
     if request.app.state.model is None:
@@ -69,7 +70,10 @@ def chat(request: Request, body: ChatRequest) -> ChatResponse:
     try:
         prediction_class = request.app.state.model.predict([_feature_text(body.message, dosha)])[0]
     except Exception as exc:
-        raise HTTPException(status_code=500, detail="Failed to generate response.") from exc
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to generate response ({exc.__class__.__name__}).",
+        ) from exc
     response = request.app.state.class_to_response.get(prediction_class)
     if response is None:
         raise HTTPException(

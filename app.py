@@ -27,7 +27,7 @@ def _load_model():
             f"Model not found at {MODEL_PATH}. Train it first with `python train_model.py`."
         )
     payload = joblib.load(MODEL_PATH)
-    return payload["model"], payload.get("class_to_response", {})
+    return payload["model"], payload["class_to_response"]
 
 
 def _feature_text(message: str, dosha: str) -> str:
@@ -72,5 +72,8 @@ def chat(request: Request, body: ChatRequest) -> ChatResponse:
         raise HTTPException(status_code=500, detail="Failed to generate response.") from exc
     response = request.app.state.class_to_response.get(prediction_class)
     if response is None:
-        raise HTTPException(status_code=500, detail="Model response mapping is invalid.")
+        raise HTTPException(
+            status_code=500,
+            detail=f"No response mapping found for prediction class {prediction_class}.",
+        )
     return ChatResponse(response=response)

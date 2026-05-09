@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import joblib
@@ -7,27 +8,25 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-
-TRAINING_SAMPLES = [
-    {"message": "I feel dry skin and anxiety", "dosha": "vata", "response": "For Vata imbalance, prefer warm cooked meals, sesame oil massage, and regular sleep timings."},
-    {"message": "I have irregular digestion and bloating", "dosha": "vata", "response": "For Vata digestion issues, use warm soups, ginger tea, and avoid cold/raw foods."},
-    {"message": "I feel acidity and anger", "dosha": "pitta", "response": "For Pitta imbalance, choose cooling foods like cucumber, coconut water, and avoid spicy meals."},
-    {"message": "I get skin rashes in summer", "dosha": "pitta", "response": "For Pitta skin irritation, stay cool, hydrate well, and include aloe vera and bitter vegetables."},
-    {"message": "I feel heavy and sleepy", "dosha": "kapha", "response": "For Kapha imbalance, prefer light spicy meals, regular exercise, and avoid daytime naps."},
-    {"message": "I have slow metabolism and congestion", "dosha": "kapha", "response": "For Kapha congestion, take warm herbal teas, reduce dairy, and keep active daily."},
-    {"message": "How should I eat daily", "dosha": "vata", "response": "Vata routine: warm and grounding meals on a fixed schedule with gentle evening wind-down."},
-    {"message": "How should I eat daily", "dosha": "pitta", "response": "Pitta routine: cooling, less spicy meals and enough hydration during the day."},
-    {"message": "How should I eat daily", "dosha": "kapha", "response": "Kapha routine: light breakfast, warming spices, and avoid overeating at night."},
-]
+TRAINING_DATA_PATH = Path("data/training_data.json")
 
 
 def _feature_text(message: str, dosha: str) -> str:
     return f"dosha:{dosha.strip().lower()} text:{message.strip().lower()}"
 
 
+def _load_training_samples():
+    with TRAINING_DATA_PATH.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
 def train_and_save_model(output_path: Path) -> Path:
-    features = [_feature_text(item["message"], item["dosha"]) for item in TRAINING_SAMPLES]
-    labels = [item["response"] for item in TRAINING_SAMPLES]
+    training_samples = _load_training_samples()
+    features = [_feature_text(item["message"], item["dosha"]) for item in training_samples]
+    responses = [item["response"] for item in training_samples]
+    response_to_class = {response: idx for idx, response in enumerate(sorted(set(responses)))}
+    class_to_response = {value: key for key, value in response_to_class.items()}
+    labels = [response_to_class[item["response"]] for item in training_samples]
 
     model = Pipeline(
         [
@@ -38,7 +37,7 @@ def train_and_save_model(output_path: Path) -> Path:
     model.fit(features, labels)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump({"model": model}, output_path)
+    joblib.dump({"model": model, "class_to_response": class_to_response}, output_path)
     return output_path
 
 

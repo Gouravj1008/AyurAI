@@ -9,6 +9,9 @@ from pydantic import BaseModel, Field
 
 
 MODEL_PATH = Path(os.getenv("MODEL_PATH", "models/ayurai_model.joblib"))
+MODEL = None
+CLASS_TO_RESPONSE = {}
+MODEL_LOAD_ERROR = None
 
 app = FastAPI(title="AyurAI Chatbot API", version="1.0.0")
 
@@ -28,7 +31,7 @@ def _load_model():
             f"Model not found at {MODEL_PATH}. Train it first with `python train_model.py`."
         )
     payload = joblib.load(MODEL_PATH)
-    return payload["model"]
+    return payload["model"], payload.get("class_to_response", {})
 
 
 def _feature_text(message: str, dosha: str) -> str:
@@ -40,16 +43,34 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.on_event("startup")
+def load_model_on_startup() -> None:
+    global MODEL, CLASS_TO_RESPONSE, MODEL_LOAD_ERROR
+    try:
+        MODEL, CLASS_TO_RESPONSE = _load_model()
+        MODEL_LOAD_ERROR = None
+    except FileNotFoundError as exc:
+        MODEL = None
+        CLASS_TO_RESPONSE = {}
+        MODEL_LOAD_ERROR = str(exc)
+
+
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest) -> ChatResponse:
+    global MODEL, CLASS_TO_RESPONSE, MODEL_LOAD_ERROR
     dosha = request.dosha.strip().lower()
     if dosha not in {"vata", "pitta", "kapha"}:
         raise HTTPException(status_code=400, detail="dosha must be one of: vata, pitta, kapha")
 
-    try:
-        model = _load_model()
-    except FileNotFoundError as exc:
-        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    if MODEL is None:
+        if MODEL_LOAD_ERROR is None:
+            try:
+                MODEL, CLASS_TO_RESPONSE = _load_model()
+                MODEL_LOAD_ERROR = None
+            except FileNotFoundError as exc:
+                MODEL_LOAD_ERROR = str(exc)
+        raise HTTPException(status_code=503, detail=MODEL_LOAD_ERROR)
 
-    prediction = model.predict([_feature_text(request.message, dosha)])[0]
-    return ChatResponse(response=prediction)
+    prediction_class = int(MODEL.predict([_feature_text(request.message, dosha)])[0])
+    response = CLASS_TO_RESPONSE.get(prediction_class, "")
+    return ChatResponse(response=response)

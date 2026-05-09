@@ -10,6 +10,7 @@ python train_model.py
 ```
 
 This creates `models/ayurai_model.joblib`.
+Training examples are stored in `data/training_data.json`, so you can edit and retrain.
 
 ## Run locally with trained model
 

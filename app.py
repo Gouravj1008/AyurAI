@@ -1,19 +1,15 @@
 from __future__ import annotations
 
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 import joblib
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel, Field
 
 
 MODEL_PATH = Path(os.getenv("MODEL_PATH", "models/ayurai_model.joblib"))
-MODEL = None
-CLASS_TO_RESPONSE = {}
-MODEL_LOAD_ERROR = None
-
-app = FastAPI(title="AyurAI Chatbot API", version="1.0.0")
 
 
 class ChatRequest(BaseModel):
@@ -38,39 +34,47 @@ def _feature_text(message: str, dosha: str) -> str:
     return f"dosha:{dosha.strip().lower()} text:{message.strip().lower()}"
 
 
+@asynccontextmanager
+async def lifespan(application: FastAPI):
+    try:
+        model, class_to_response = _load_model()
+        application.state.model = model
+        application.state.class_to_response = class_to_response
+        application.state.model_load_error = None
+    except FileNotFoundError as exc:
+        application.state.model = None
+        application.state.class_to_response = {}
+        application.state.model_load_error = str(exc)
+    yield
+
+
+app = FastAPI(title="AyurAI Chatbot API", version="1.0.0", lifespan=lifespan)
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-@app.on_event("startup")
-def load_model_on_startup() -> None:
-    global MODEL, CLASS_TO_RESPONSE, MODEL_LOAD_ERROR
-    try:
-        MODEL, CLASS_TO_RESPONSE = _load_model()
-        MODEL_LOAD_ERROR = None
-    except FileNotFoundError as exc:
-        MODEL = None
-        CLASS_TO_RESPONSE = {}
-        MODEL_LOAD_ERROR = str(exc)
-
-
 @app.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest) -> ChatResponse:
-    global MODEL, CLASS_TO_RESPONSE, MODEL_LOAD_ERROR
-    dosha = request.dosha.strip().lower()
+def chat(request: Request, body: ChatRequest) -> ChatResponse:
+    dosha = body.dosha.strip().lower()
     if dosha not in {"vata", "pitta", "kapha"}:
         raise HTTPException(status_code=400, detail="dosha must be one of: vata, pitta, kapha")
 
-    if MODEL is None:
-        if MODEL_LOAD_ERROR is None:
+    if request.app.state.model is None:
+        if request.app.state.model_load_error is None:
             try:
-                MODEL, CLASS_TO_RESPONSE = _load_model()
-                MODEL_LOAD_ERROR = None
+                model, class_to_response = _load_model()
+                request.app.state.model = model
+                request.app.state.class_to_response = class_to_response
+                request.app.state.model_load_error = None
             except FileNotFoundError as exc:
-                MODEL_LOAD_ERROR = str(exc)
-        raise HTTPException(status_code=503, detail=MODEL_LOAD_ERROR)
+                request.app.state.model_load_error = str(exc)
+        raise HTTPException(status_code=503, detail=request.app.state.model_load_error)
 
-    prediction_class = int(MODEL.predict([_feature_text(request.message, dosha)])[0])
-    response = CLASS_TO_RESPONSE.get(prediction_class, "")
+    prediction_class = int(request.app.state.model.predict([_feature_text(body.message, dosha)])[0])
+    response = request.app.state.class_to_response.get(prediction_class)
+    if response is None:
+        raise HTTPException(status_code=500, detail="Model response mapping is invalid.")
     return ChatResponse(response=response)

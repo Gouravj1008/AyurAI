@@ -15,7 +15,7 @@ def _feature_text(message: str, dosha: str) -> str:
     return f"dosha:{dosha.strip().lower()} text:{message.strip().lower()}"
 
 
-def _load_training_samples():
+def _load_training_samples() -> list[dict[str, str]]:
     with TRAINING_DATA_PATH.open("r", encoding="utf-8") as file:
         return json.load(file)
 
@@ -24,8 +24,8 @@ def train_and_save_model(output_path: Path) -> Path:
     training_samples = _load_training_samples()
     features = [_feature_text(item["message"], item["dosha"]) for item in training_samples]
     responses = [item["response"] for item in training_samples]
-    response_to_class = {response: idx for idx, response in enumerate(sorted(set(responses)))}
-    class_to_response = {value: key for key, value in response_to_class.items()}
+    class_to_response = dict(enumerate(sorted(set(responses))))
+    response_to_class = {response: idx for idx, response in class_to_response.items()}
     labels = [response_to_class[item["response"]] for item in training_samples]
 
     model = Pipeline(

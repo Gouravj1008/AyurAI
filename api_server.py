@@ -40,14 +40,15 @@ brain = None
 
 
 def get_allowed_origins() -> list[str]:
-    origins = os.getenv("CORS_ORIGINS", "").strip()
-    if origins:
-        return [origin.strip().rstrip("/") for origin in origins.split(",") if origin.strip()]
-
-    return [
+    allowed = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        r"https://.*\.vercel\.app",
     ]
+    origins = os.getenv("CORS_ORIGINS", "").strip()
+    if origins:
+        allowed.extend(origin.strip().rstrip("/") for origin in origins.split(",") if origin.strip())
+    return allowed
 
 
 # ---------------------------------------------------------------------------

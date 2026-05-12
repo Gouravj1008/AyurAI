@@ -1,0 +1,66 @@
+# ==================== CORE DEPENDENCIES ====================
+# Base transformers library for model loading
+transformers==4.40.0
+torch>=2.0.0
+torchvision
+torchaudio
+
+# Model quantization for memory efficiency
+bitsandbytes>=0.42.0
+
+# Parameter-Efficient Fine-Tuning (LoRA)
+peft>=0.10.0
+
+# Supervised Fine-Tuning
+trl>=0.8.1
+
+# Dataset handling
+datasets>=2.16.0
+
+# ==================== AUDIO & VOICE ====================
+# Vosk offline speech-to-text
+vosk>=0.3.32
+
+# Porcupine hotword detection
+pvporcupine>=3.2.0
+
+# Audio I/O
+sounddevice>=0.4.6
+
+# Text-to-speech
+pyttsx3>=2.90
+
+# ==================== UI & INTERFACE ====================
+# Tkinter comes with Python, but might need system package
+# Already included in standard Python
+
+# System tray integration
+pystray>=0.19.5
+pillow>=10.0.0
+
+# ==================== UTILITIES ====================
+# Environment variable loading
+python-dotenv>=1.0.0
+
+# JSON & data handling
+numpy>=1.24.0
+scipy>=1.10.0
+
+# ==================== DEVELOPMENT ====================
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Linting & formatting
+black>=23.0.0
+flake8>=6.0.0
+isort>=5.12.0
+
+# Type checking
+mypy>=1.7.0
+
+# ==================== OPTIONAL ====================
+# Jupyter notebook support (optional)
+jupyter>=1.0.0
+jupyter-client>=8.0.0
+ipykernel>=6.25.0

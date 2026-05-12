@@ -1,0 +1,10 @@
+vosk
+sounddevice
+pyttsx3
+python-dotenv
+Pillow
+transformers
+torch
+datasets
+peft
+accelerate

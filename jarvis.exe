@@ -1,0 +1,131 @@
+import queue
+import json
+import time
+import os
+import numpy as np
+import sounddevice as sd
+from vosk import Model, KaldiRecognizer
+import pyttsx3
+import webbrowser
+
+# ========================
+# CONFIG
+# ========================
+AUDIO_DEVICE = 1          # None = Windows default
+TARGET_RATE = 16000
+MODEL_PATH = "models/vosk-model-small-en-us-0.15"
+
+# ========================
+# LIVE TEXT CALLBACK (GUI)
+# ========================
+live_text_callback = None
+
+def set_live_text_callback(cb):
+    global live_text_callback
+    live_text_callback = cb
+
+# ========================
+# TEXT TO SPEECH
+# ========================
+engine = pyttsx3.init()
+engine.setProperty("rate", 150)
+
+def speak(text):
+    print("JARVIS:", text)
+    engine.say(text)
+    engine.runAndWait()
+
+# ========================
+# LOAD VOSK
+# ========================
+if not os.path.exists(MODEL_PATH):
+    raise RuntimeError("VOSK model not found")
+
+model = Model(MODEL_PATH)
+recognizer = KaldiRecognizer(model, TARGET_RATE)
+audio_queue = queue.Queue()
+
+# ========================
+# AUDIO CALLBACK
+# ========================
+def audio_callback(indata, frames, time_info, status):
+    audio_queue.put(bytes(indata))
+
+def resample(buffer_bytes, in_rate):
+    if in_rate == TARGET_RATE:
+        return buffer_bytes
+    data = np.frombuffer(buffer_bytes, dtype=np.int16)
+    ratio = TARGET_RATE / float(in_rate)
+    out_len = int(len(data) * ratio)
+    x_old = np.linspace(0, 1, len(data))
+    x_new = np.linspace(0, 1, out_len)
+    return np.interp(x_new, x_old, data).astype(np.int16).tobytes()
+
+# ========================
+# COMMAND HANDLER
+# ========================
+def handle_command(text):
+    text = text.lower()
+
+    if "time" in text:
+        speak("The time is " + time.strftime("%I:%M %p"))
+        return
+
+    if "browser" in text:
+        speak("Opening browser")
+        webbrowser.open("https://google.com")
+        return
+
+    if "exit" in text or "quit" in text:
+        speak("Goodbye")
+        os._exit(0)
+
+    speak("I heard: " + text)
+
+# ========================
+# LISTEN ONCE (GUI SAFE)
+# ========================
+def listen_once():
+    device = AUDIO_DEVICE if AUDIO_DEVICE is not None else sd.default.device[0]
+    info = sd.query_devices(device, "input")
+    in_rate = int(info["default_samplerate"])
+
+    with sd.RawInputStream(
+        samplerate=in_rate,
+        blocksize=8000,
+        dtype="int16",
+        channels=1,
+        device=device,
+        callback=audio_callback,
+    ):
+        while True:
+            data = audio_queue.get()
+            audio = resample(data, in_rate)
+
+            if recognizer.AcceptWaveform(audio):
+                result = json.loads(recognizer.Result())
+                text = result.get("text", "")
+
+                if text:
+                    if live_text_callback:
+                        live_text_callback(text, final=True)
+
+                    handle_command(text)
+                    break
+            else:
+                try:
+                    partial = json.loads(
+                        recognizer.PartialResult()
+                    ).get("partial", "")
+                    if partial and live_text_callback:
+                        live_text_callback(partial, final=False)
+                except:
+                    pass
+
+# ========================
+# RUN DIRECTLY (OPTIONAL)
+# ========================
+if __name__ == "__main__":
+    speak("Jarvis ready")
+    while True:
+        listen_once()

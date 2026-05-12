@@ -1,0 +1,157 @@
+{
+  "passed": 24,
+  "failed": 4,
+  "skipped": 2,
+  "results": [
+    {
+      "name": "Python Version",
+      "status": "PASS",
+      "message": "3.14.3"
+    },
+    {
+      "name": "Import Hugging Face transformers",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Import PyTorch",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Import PEFT LoRA",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Import Vosk STT",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Import Porcupine hotword",
+      "status": "FAIL",
+      "message": "No module named 'pvporcupine'"
+    },
+    {
+      "name": "Import Sound device I/O",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Import Environment config",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "GPU availability",
+      "status": "SKIP",
+      "message": "No CUDA device, using CPU"
+    },
+    {
+      "name": "File Configuration module",
+      "status": "PASS",
+      "message": "4738 bytes"
+    },
+    {
+      "name": "File AI brain module",
+      "status": "PASS",
+      "message": "13851 bytes"
+    },
+    {
+      "name": "File Chat UI module",
+      "status": "PASS",
+      "message": "27048 bytes"
+    },
+    {
+      "name": "File Voice input module",
+      "status": "PASS",
+      "message": "6736 bytes"
+    },
+    {
+      "name": "File Hotword module",
+      "status": "PASS",
+      "message": "6060 bytes"
+    },
+    {
+      "name": "File Error handler module",
+      "status": "PASS",
+      "message": "8712 bytes"
+    },
+    {
+      "name": "File Environment file",
+      "status": "PASS",
+      "message": "50 bytes"
+    },
+    {
+      "name": "Model Vosk STT model",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Model Porcupine hotword model",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Model Ayurveda training data",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Training data",
+      "status": "PASS",
+      "message": "37 Q&A pairs"
+    },
+    {
+      "name": "Configuration loading",
+      "status": "PASS",
+      "message": ""
+    },
+    {
+      "name": "Porcupine API key",
+      "status": "SKIP",
+      "message": "Add to .env for hotword"
+    },
+    {
+      "name": "Device selection",
+      "status": "PASS",
+      "message": "CUDA (GPU)"
+    },
+    {
+      "name": "Base model",
+      "status": "PASS",
+      "message": "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+    },
+    {
+      "name": "Audio input devices",
+      "status": "PASS",
+      "message": "13 device(s) found"
+    },
+    {
+      "name": "Default input device",
+      "status": "PASS",
+      "message": "Microphone Array (Intel\u00ae Smart "
+    },
+    {
+      "name": "Hotword detector",
+      "status": "FAIL",
+      "message": "No module named 'pvporcupine'"
+    },
+    {
+      "name": "Vosk STT engine",
+      "status": "FAIL",
+      "message": "No module named 'pvporcupine'"
+    },
+    {
+      "name": "AI brain initialization",
+      "status": "FAIL",
+      "message": "LlamaForCausalLM.__init__() got an unexpected keyword argument 'load_in_4bit'"
+    },
+    {
+      "name": "Tkinter UI",
+      "status": "PASS",
+      "message": ""
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "gouravv": {
+    "email": "gaurav@gmail.com",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "full_name": "Gaurav",
+    "created_at": "2026-05-07T00:04:00.917551",
+    "dosha": null,
+    "preferences": {}
+  },
+  "testuser_20260508@example.com": {
+    "email": "testuser_20260508@example.com",
+    "password": "c1b8b58c3e7ac442b525e87709d5c1aef49a5d5acb70551be645887a978e238a",
+    "full_name": "Test User",
+    "created_at": "2026-05-08T19:39:29.712173",
+    "dosha": "vata",
+    "dosha_source": "signup-selected",
+    "constitution": "",
+    "chat_history": [
+      {
+        "user": "routine",
+        "assistant": "For your VATA dosha, here is a strict Ayurveda routine guidance:\n\n **Vata Stress Plan:**\n- Daily oil massage (grounding)\n- Meditation 10-15 minutes\n- Yoga: forward bends, lotus pose\n- Warm herbal teas (chamomile, ashwagandha)\n- Maintain routine and schedules\n- Calming music and environments\n- Avoid excessive stimulation\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T19:48:36.583580"
+      },
+      {
+        "user": "fever and lean body",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T19:49:12.553220"
+      },
+      {
+        "user": "herbs to low a vata",
+        "assistant": "Your active dosha profile is VATA.\n\n\n Vata (Air + Ether) governs movement, creativity, adaptability, nerves, breath, and elimination.\n\n**Characteristics:** thin, slim, creative, anxious, energetic, cold, dry, irregular, light sleeper, constipation\n**Ideal Diet:** warm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n**Beneficial Herbs:** ashwagandha, ginger, cumin, fennel, licorice\n**Avoid:** raw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n**Daily Rhythm:** keep regular meal times, use warm oil massage, choose gentle yoga, protect from cold wind\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T19:49:32.313073"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T19:52:41.627086"
+      },
+      {
+        "user": "can i eat rice",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T19:52:59.887906"
+      },
+      {
+        "user": "can i eat oily food",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T19:53:25.220151"
+      }
+    ],
+    "preferences": {}
+  },
+  "testuser_fix@example.com": {
+    "email": "testuser_fix@example.com",
+    "password": "fcf730b6d95236ecd3c9fc2d92d7b6b2bb061514961aec041d6c7a7192f592e4",
+    "full_name": "Test User",
+    "created_at": "2026-05-08T22:08:40.718373",
+    "dosha": "vata",
+    "dosha_source": "signup-selected",
+    "constitution": "",
+    "chat_history": [],
+    "preferences": {}
+  },
+  "gaurav12@gmail.com": {
+    "email": "gaurav12@gmail.com",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "full_name": "Gaurav",
+    "created_at": "2026-05-08T22:16:29.559372",
+    "dosha": "vata",
+    "dosha_source": "signup-selected",
+    "constitution": "cold easily",
+    "chat_history": [
+      {
+        "user": "hi",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T22:21:02.526972"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T22:21:26.472086"
+      },
+      {
+        "user": "is banana is good",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T22:21:59.122300"
+      },
+      {
+        "user": "herbs",
+        "assistant": "For VATA, the most useful herbs are: ashwagandha, ginger, cumin, fennel, licorice.\n\nAvoid self-prescribing strong herbs without supervision. \n**Doctor Recommendation for Vata**\nConsult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-08T22:22:07.439508"
+      },
+      {
+        "user": "cold and weight loss",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T22:22:39.338834"
+      },
+      {
+        "user": "sleep",
+        "assistant": "For your VATA dosha, here is a strict Ayurveda routine guidance:\n\n **Vata Sleep Plan:**\n- Oil massage (Abhyanga) before bed\n- Sesame oil on scalp and soles\n- Warm milk with nutmeg and honey\n- Establish bedtime routine\n- Avoid stimulation before sleep\n- 10:00 PM bedtime ideal\n- Use Brahmi oil for calming\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T22:25:04.902330"
+      },
+      {
+        "user": "remedy",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T22:26:18.478209"
+      },
+      {
+        "user": "digestion",
+        "assistant": "For your VATA dosha, focus on a balancing diet and routine.\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\n\n**Doctor Recommendation for Vata**\nConsult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-08T22:27:00.791605"
+      },
+      {
+        "user": "hi",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T23:59:16.415253"
+      },
+      {
+        "user": "what is vatta",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-08T23:59:29.564865"
+      },
+      {
+        "user": "vata",
+        "assistant": "Your active dosha profile is VATA.\n\n\n Vata (Air + Ether) governs movement, creativity, adaptability, nerves, breath, and elimination.\n\n**Characteristics:** thin, slim, creative, anxious, energetic, cold, dry, irregular, light sleeper, constipation\n**Ideal Diet:** warm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n**Beneficial Herbs:** ashwagandha, ginger, cumin, fennel, licorice\n**Avoid:** raw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n**Daily Rhythm:** keep regular meal times, use warm oil massage, choose gentle yoga, protect from cold wind\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T23:59:36.866616"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-08T23:59:47.914662"
+      },
+      {
+        "user": "rice",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-09T00:00:05.074956"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T00:00:13.795016"
+      },
+      {
+        "user": "best warm food for vata",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T00:01:20.161960"
+      },
+      {
+        "user": "what is sattvic food",
+        "assistant": "For your VATA dosha, here is the diet guidance:\n\n\n **VATA DIET PLAN**\n\n **Foods to INCLUDE:**\nwarm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n\n **Beneficial Herbs & Spices:**\nashwagandha, ginger, cumin, fennel, licorice\n\n **Foods to AVOID:**\nraw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T00:01:41.974168"
+      },
+      {
+        "user": "herbs",
+        "assistant": "For VATA, the most useful herbs are: ashwagandha, ginger, cumin, fennel, licorice.\n\nAvoid self-prescribing strong herbs without supervision. \n**Doctor Recommendation for Vata**\nConsult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-09T00:01:51.738076"
+      },
+      {
+        "user": "hi",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is VATA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-09T00:06:07.259571"
+      },
+      {
+        "user": "kapha",
+        "assistant": "Your active dosha profile is VATA.\n\n\n Vata (Air + Ether) governs movement, creativity, adaptability, nerves, breath, and elimination.\n\n**Characteristics:** thin, slim, creative, anxious, energetic, cold, dry, irregular, light sleeper, constipation\n**Ideal Diet:** warm cooked meals, ghee, sesame oil, root vegetables, rice, oats, soups, stews, ripe bananas, dates\n**Beneficial Herbs:** ashwagandha, ginger, cumin, fennel, licorice\n**Avoid:** raw foods, cold drinks, dry snacks, excessive fasting, too much caffeine\n**Daily Rhythm:** keep regular meal times, use warm oil massage, choose gentle yoga, protect from cold wind\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if anxiety, insomnia, constipation, unexplained weight loss, tremors, or pain persists.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T00:06:20.124457"
+      },
+      {
+        "user": "routine",
+        "assistant": "For your VATA dosha, here is a strict Ayurveda routine guidance:\n\n **Vata Stress Plan:**\n- Daily oil massage (grounding)\n- Meditation 10-15 minutes\n- Yoga: forward bends, lotus pose\n- Warm herbal teas (chamomile, ashwagandha)\n- Maintain routine and schedules\n- Calming music and environments\n- Avoid excessive stimulation\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T00:06:50.066258"
+      }
+    ],
+    "preferences": {}
+  },
+  "testuser_test2@example.com": {
+    "email": "testuser_test2@example.com",
+    "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "full_name": "Test User",
+    "created_at": "2026-05-08T23:44:51.815326",
+    "dosha": "vata",
+    "dosha_source": "signup-selected",
+    "constitution": "",
+    "chat_history": [],
+    "preferences": {}
+  },
+  "john@gmail.com": {
+    "email": "john@gmail.com",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "full_name": "john",
+    "created_at": "2026-05-09T21:29:33.285841",
+    "dosha": "pitta",
+    "dosha_source": "signup-selected",
+    "constitution": "",
+    "chat_history": [
+      {
+        "user": "pitta",
+        "assistant": "Your active dosha profile is PITTA.\n\n\n Pitta (Fire + Water) governs digestion, metabolism, body heat, focus, courage, and transformation.\n\n**Characteristics:** medium build, sharp, ambitious, sensitive, warm, hot, acidic, irritable, oily skin, rashes\n**Ideal Diet:** cooling foods, coconut, leafy greens, cucumber, melons, rice, milk, ghee, sweet fruits\n**Beneficial Herbs:** brahmi, amla, neem, coriander, fennel\n**Avoid:** spicy foods, fried foods, fermented foods, alcohol, excessive heat, too much salt\n**Daily Rhythm:** eat before becoming very hungry, stay cool, take breaks from competition, use moonlight walks or cooling breath\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:30:53.196601"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your PITTA dosha, here is the diet guidance:\n\n\n **PITTA DIET PLAN**\n\n **Foods to INCLUDE:**\ncooling foods, coconut, leafy greens, cucumber, melons, rice, milk, ghee, sweet fruits\n\n **Beneficial Herbs & Spices:**\nbrahmi, amla, neem, coriander, fennel\n\n **Foods to AVOID:**\nspicy foods, fried foods, fermented foods, alcohol, excessive heat, too much salt\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:31:02.587809"
+      },
+      {
+        "user": "herbs",
+        "assistant": "For PITTA, the most useful herbs are: brahmi, amla, neem, coriander, fennel.\n\nAvoid self-prescribing strong herbs without supervision. \n**Doctor Recommendation for Pitta**\nConsult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-09T21:31:28.702342"
+      },
+      {
+        "user": "symptom",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is PITTA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-09T21:31:45.396220"
+      },
+      {
+        "user": "sleep",
+        "assistant": "For your PITTA dosha, here is a strict Ayurveda routine guidance:\n\n **Pitta Sleep Plan:**\n- Brahmi oil massage\n- Cooling environments (air flow)\n- Coconut oil on skin\n- Cool herbal teas: brahmi, shankhpushpi\n- Avoid late-night work/stimulation\n- Earlier sleep (10:00 PM ideal)\n- Lavender aromatherapy\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:31:55.152950"
+      },
+      {
+        "user": "vaidya",
+        "assistant": "\n**Doctor Recommendation for Pitta**\nConsult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-09T21:32:10.110565"
+      },
+      {
+        "user": "hi",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is PITTA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-09T21:37:33.955541"
+      },
+      {
+        "user": "diet",
+        "assistant": "For your PITTA dosha, here is the diet guidance:\n\n\n **PITTA DIET PLAN**\n\n **Foods to INCLUDE:**\ncooling foods, coconut, leafy greens, cucumber, melons, rice, milk, ghee, sweet fruits\n\n **Beneficial Herbs & Spices:**\nbrahmi, amla, neem, coriander, fennel\n\n **Foods to AVOID:**\nspicy foods, fried foods, fermented foods, alcohol, excessive heat, too much salt\n\n **Meal Times:** Eat at consistent times, preferably with others\n **Digestion Tip:** Chew slowly, eat mindfully\n **Hydration:** Drink warm water or herbal teas\n\n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:38:19.285827"
+      },
+      {
+        "user": "herbs",
+        "assistant": "For PITTA, the most useful herbs are: brahmi, amla, neem, coriander, fennel.\n\nAvoid self-prescribing strong herbs without supervision. \n**Doctor Recommendation for Pitta**\nConsult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n\nRecommended Vaidya: Vaidya Rohit Tayde\n\nAsk Vaidya Rohit Tayde what to do for this specific user after reviewing their prakriti, vikriti, symptoms, medicines, allergies, age, diet, sleep, pulse assessment, and medical history. Also keep a primary-care doctor involved for labs, persistent symptoms, prescription medicines, pregnancy, children, older adults, or diagnosed conditions.\n\nBefore the visit, note your sleep, appetite, bowel pattern, stress, current medicines, allergies, and a 3-day food log.\n",
+        "timestamp": "2026-05-09T21:38:31.701541"
+      },
+      {
+        "user": "fever and cold",
+        "assistant": "I specialize only in Ayurveda dosha guidance. Your current dosha is PITTA. Ask me about Vata, Pitta, Kapha, diet, herbs, sleep, stress, digestion, or a Vaidya recommendation.",
+        "timestamp": "2026-05-09T21:38:58.742898"
+      },
+      {
+        "user": "fever and cold herbs for pitta",
+        "assistant": "Your active dosha profile is PITTA.\n\n\n Pitta (Fire + Water) governs digestion, metabolism, body heat, focus, courage, and transformation.\n\n**Characteristics:** medium build, sharp, ambitious, sensitive, warm, hot, acidic, irritable, oily skin, rashes\n**Ideal Diet:** cooling foods, coconut, leafy greens, cucumber, melons, rice, milk, ghee, sweet fruits\n**Beneficial Herbs:** brahmi, amla, neem, coriander, fennel\n**Avoid:** spicy foods, fried foods, fermented foods, alcohol, excessive heat, too much salt\n**Daily Rhythm:** eat before becoming very hungry, stay cool, take breaks from competition, use moonlight walks or cooling breath\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:39:14.288208"
+      },
+      {
+        "user": "fever medication for pitta",
+        "assistant": "Your active dosha profile is PITTA.\n\n\n Pitta (Fire + Water) governs digestion, metabolism, body heat, focus, courage, and transformation.\n\n**Characteristics:** medium build, sharp, ambitious, sensitive, warm, hot, acidic, irritable, oily skin, rashes\n**Ideal Diet:** cooling foods, coconut, leafy greens, cucumber, melons, rice, milk, ghee, sweet fruits\n**Beneficial Herbs:** brahmi, amla, neem, coriander, fennel\n**Avoid:** spicy foods, fried foods, fermented foods, alcohol, excessive heat, too much salt\n**Daily Rhythm:** eat before becoming very hungry, stay cool, take breaks from competition, use moonlight walks or cooling breath\n**Doctor Recommendation:** Consult Vaidya Rohit Tayde or another qualified physician if acidity, burning sensations, skin inflammation, fever, blood pressure concerns, or anger spikes persist.\n    \n\nRecommended Vaidya: Vaidya Rohit Tayde",
+        "timestamp": "2026-05-09T21:39:32.996250"
+      }
+    ],
+    "preferences": {}
+  }
+}

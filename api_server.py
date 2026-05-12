@@ -39,6 +39,17 @@ auth_manager = AuthManager()
 brain = None
 
 
+def get_allowed_origins() -> list[str]:
+    origins = os.getenv("CORS_ORIGINS", "").strip()
+    if origins:
+        return [origin.strip().rstrip("/") for origin in origins.split(",") if origin.strip()]
+
+    return [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
+
 # ---------------------------------------------------------------------------
 # JWT helpers
 # ---------------------------------------------------------------------------
@@ -146,7 +157,12 @@ def build_auth_response(username: str, token: str) -> Dict[str, Any]:
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    CORS(app, origins=["http://localhost:3000", "http://127.0.0.1:3000"])
+    CORS(
+        app,
+        origins=get_allowed_origins(),
+        methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
+    )
 
     # ------------------------------------------------------------------
     # Health

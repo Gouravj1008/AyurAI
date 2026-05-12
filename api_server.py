@@ -335,7 +335,8 @@ def create_app() -> Flask:
 # Entry point
 # ---------------------------------------------------------------------------
 
-def run_api_server(host: str = "127.0.0.1", port: int = 5000):
+def run_api_server(host: str = "0.0.0.0", port: Optional[int] = None):
+    port = port or int(os.getenv("PORT", "5000"))
     app = create_app()
     app.run(host=host, port=port, debug=False, use_reloader=False)
 

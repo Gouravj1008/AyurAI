@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Logo Animation Demo</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --accent: #2a9d8f;
+      --light: #f8fafc;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071029);
+      font-family: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .stage {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-direction: column;
+      color: var(--light);
+    }
+
+    .logo-wrap {
+      width: min(360px, 80vw);
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      transform-origin: center center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .reveal {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(60% 60% at 50% 40%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));
+      mix-blend-mode: screen;
+      filter: blur(6px);
+      animation: glow 4s ease-in-out infinite;
+    }
+
+    .caption {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--light);
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(-1deg) scale(1); }
+      50% { transform: translateY(-8px) rotate(1deg) scale(1.02); }
+      100% { transform: translateY(0) rotate(-1deg) scale(1); }
+    }
+
+    @keyframes glow {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="logo-wrap">
+      <img id="logo" class="logo" src="../assets/logo_transparent.png" alt="AyurAI logo" />
+      <span class="reveal" aria-hidden="true"></span>
+    </div>
+    <div class="caption">Animated logo demo - scale, float and glow</div>
+    <div class="controls">
+      <button id="pulse" type="button">Pulse</button>
+      <button id="spin" type="button">Spin</button>
+    </div>
+  </div>
+
+  <script>
+    const logo = document.getElementById('logo')
+
+    document.getElementById('pulse').addEventListener('click', () => {
+      logo.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.12)' },
+        { transform: 'scale(1)' },
+      ], { duration: 700, easing: 'ease-out' })
+    })
+
+    document.getElementById('spin').addEventListener('click', () => {
+      logo.animate([
+        { transform: 'rotate(0deg)' },
+        { transform: 'rotate(360deg)' },
+      ], { duration: 1000, easing: 'cubic-bezier(.2,.8,.2,1)' })
+    })
+  </script>
+</body>
+</html>

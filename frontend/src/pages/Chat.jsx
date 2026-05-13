@@ -21,7 +21,11 @@ export default function Chat() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [listening, setListening] = useState(false)
+  const [voiceEnabled, setVoiceEnabled] = useState(true)
+  const [voiceStatus, setVoiceStatus] = useState('')
   const messagesEndRef = useRef(null)
+  const recognitionRef = useRef(null)
   const doshaSourceLabel = user?.dosha_source === 'signup-detected'
     ? 'AI-detected from signup answer'
     : user?.dosha_source === 'signup-selected'
@@ -39,14 +43,34 @@ export default function Chat() {
     scrollToBottom()
   }, [messages])
 
-  const handleSendMessage = async () => {
-    if (!input.trim() || loading) return
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.abort()
+      window.speechSynthesis?.cancel()
+    }
+  }, [])
+
+  const speakReply = (text) => {
+    if (!voiceEnabled || !('speechSynthesis' in window) || !text) return
+
+    window.speechSynthesis.cancel()
+    const utterance = new SpeechSynthesisUtterance(text.replace(/\*\*/g, ''))
+    utterance.rate = 0.94
+    utterance.pitch = 1
+    utterance.volume = 0.92
+    window.speechSynthesis.speak(utterance)
+  }
+
+  const handleSendMessage = async (messageText = input) => {
+    const sourceText = typeof messageText === 'string' ? messageText : input
+    const trimmedMessage = sourceText.trim()
+    if (!trimmedMessage || loading) return
 
     // Add user message
     const userMessage = {
       id: Date.now(),
       type: 'user',
-      content: input,
+      content: trimmedMessage,
       timestamp: new Date(),
     }
 
@@ -58,7 +82,7 @@ export default function Chat() {
       const response = await axios.post(
         `${API_BASE_URL}/chat`,
         {
-          message: input,
+          message: trimmedMessage,
           dosha: user?.dosha || '',
           constitution: user?.constitution || '',
         },
@@ -78,6 +102,7 @@ export default function Chat() {
       }
 
       setMessages((prev) => [...prev, botMessage])
+      speakReply(botMessage.content)
     } catch (error) {
       console.error('Chat error:', error)
 
@@ -105,9 +130,66 @@ export default function Chat() {
           timestamp: new Date(),
         },
       ])
+      speakReply(errorContent)
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleVoiceInput = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+
+    if (!SpeechRecognition) {
+      setVoiceStatus('Voice input is not supported in this browser. Try Chrome or Edge.')
+      return
+    }
+
+    if (listening) {
+      recognitionRef.current?.stop()
+      return
+    }
+
+    window.speechSynthesis?.cancel()
+    const recognition = new SpeechRecognition()
+    recognition.lang = 'en-IN'
+    recognition.interimResults = true
+    recognition.continuous = false
+
+    recognition.onstart = () => {
+      setListening(true)
+      setVoiceStatus('Listening...')
+    }
+
+    recognition.onresult = (event) => {
+      const transcript = Array.from(event.results)
+        .map((result) => result[0]?.transcript || '')
+        .join(' ')
+        .trim()
+
+      setInput(transcript)
+
+      const finalResult = event.results[event.results.length - 1]
+      if (finalResult?.isFinal && transcript) {
+        setVoiceStatus('Sending your voice message...')
+        recognition.stop()
+        handleSendMessage(transcript)
+      }
+    }
+
+    recognition.onerror = (event) => {
+      setVoiceStatus(event.error === 'not-allowed'
+        ? 'Microphone permission was blocked.'
+        : 'Could not hear clearly. Please try again.')
+      setListening(false)
+    }
+
+    recognition.onend = () => {
+      setListening(false)
+      setVoiceStatus((current) => current === 'Listening...' ? '' : current)
+    }
+
+    recognitionRef.current = recognition
+    recognition.start()
   }
 
   const handleKeyPress = (e) => {
@@ -214,6 +296,43 @@ export default function Chat() {
         {/* Input Area */}
         <div className="border-t border-white/70 bg-white/60 px-4 py-4 backdrop-blur-xl sm:px-6">
           <div className="mx-auto max-w-5xl">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleVoiceInput}
+                  disabled={loading}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition duration-300 ${
+                    listening
+                      ? 'border-rose-200 bg-rose-50 text-rose-700'
+                      : 'border-emerald-100 bg-white/85 text-emerald-900 hover:border-emerald-200 hover:bg-white'
+                  } disabled:cursor-not-allowed disabled:opacity-50`}
+                  title={listening ? 'Stop listening' : 'Start voice chat'}
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v2M8 21h8" />
+                  </svg>
+                  {listening ? 'Listening' : 'Voice chat'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setVoiceEnabled((enabled) => !enabled)
+                    window.speechSynthesis?.cancel()
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/75 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition duration-300 hover:border-emerald-200 hover:bg-white"
+                  title={voiceEnabled ? 'Turn spoken replies off' : 'Turn spoken replies on'}
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 9v6h4l5 4V5L9 9H5Z" />
+                    {voiceEnabled && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9.5a4 4 0 0 1 0 5M19 7a7 7 0 0 1 0 10" />}
+                  </svg>
+                  {voiceEnabled ? 'Voice reply on' : 'Voice reply off'}
+                </button>
+              </div>
+              {voiceStatus && <p className="text-xs font-medium text-slate-500">{voiceStatus}</p>}
+            </div>
             <div className="flex gap-3 rounded-[1.75rem] border border-white/80 bg-white/75 p-3 shadow-[0_18px_50px_rgba(62,78,65,0.09)] backdrop-blur-md">
               <textarea
                 value={input}
@@ -225,7 +344,7 @@ export default function Chat() {
                 className="min-h-[84px] flex-1 resize-none rounded-[1.35rem] border border-emerald-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,246,0.92))] px-4 py-3 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-400 focus:border-emerald-300 focus:ring-2 focus:ring-emerald-100 disabled:opacity-50"
               />
               <button
-                onClick={handleSendMessage}
+                onClick={() => handleSendMessage()}
                 disabled={loading || !input.trim()}
                 className="self-end rounded-[1.35rem] bg-gradient-to-br from-emerald-600 via-emerald-500 to-amber-300 p-4 text-white shadow-[0_16px_34px_rgba(73,139,85,0.3)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(73,139,85,0.34)] disabled:cursor-not-allowed disabled:opacity-50"
                 title="Send message (Ctrl+Enter)"

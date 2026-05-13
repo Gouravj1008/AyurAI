@@ -22,7 +22,7 @@ PRIMARY_VAIDYA_NAME = "Vaidya Rohit Tayde"
 DOSHA_TRAITS = {
     "vata": {
         "description": "Vata (Air + Ether) governs movement, creativity, adaptability, nerves, breath, and elimination.",
-        "traits": ["thin", "slim", "creative", "anxious", "energetic", "cold", "dry", "irregular", "light sleeper", "constipation"],
+        "traits": ["thin", "slim", "creative", "anxious", "energetic", "cold", "dry", "irregular", "light sleeper", "constipation", "restless", "fast talking", "forgetful", "variable appetite", "bloating", "cracking joints", "light sleep"],
         "diet": ["warm cooked meals", "ghee", "sesame oil", "root vegetables", "rice", "oats", "soups", "stews", "ripe bananas", "dates"],
         "herbs": ["ashwagandha", "ginger", "cumin", "fennel", "licorice"],
         "avoid": ["raw foods", "cold drinks", "dry snacks", "excessive fasting", "too much caffeine"],
@@ -31,7 +31,7 @@ DOSHA_TRAITS = {
     },
     "pitta": {
         "description": "Pitta (Fire + Water) governs digestion, metabolism, body heat, focus, courage, and transformation.",
-        "traits": ["medium build", "sharp", "ambitious", "sensitive", "warm", "hot", "acidic", "irritable", "oily skin", "rashes"],
+        "traits": ["medium build", "sharp", "ambitious", "sensitive", "warm", "hot", "acidic", "irritable", "oily skin", "rashes", "strong appetite", "sweat", "sweating", "heartburn", "anger", "competitive", "redness", "burning"],
         "diet": ["cooling foods", "coconut", "leafy greens", "cucumber", "melons", "rice", "milk", "ghee", "sweet fruits"],
         "herbs": ["brahmi", "amla", "neem", "coriander", "fennel"],
         "avoid": ["spicy foods", "fried foods", "fermented foods", "alcohol", "excessive heat", "too much salt"],
@@ -40,7 +40,7 @@ DOSHA_TRAITS = {
     },
     "kapha": {
         "description": "Kapha (Earth + Water) governs structure, stamina, lubrication, immunity, patience, and emotional steadiness.",
-        "traits": ["larger build", "heavy", "calm", "stable", "strong", "slow", "sleepy", "congested", "oily skin", "weight gain"],
+        "traits": ["larger build", "heavy", "calm", "stable", "strong", "slow", "sleepy", "congested", "oily skin", "weight gain", "deep sleep", "sluggish", "mucus", "lethargic", "steady appetite", "water retention", "stiff"],
         "diet": ["light meals", "dry foods", "warming spices", "legumes", "barley", "millets", "steamed vegetables", "honey", "greens"],
         "herbs": ["ginger", "black pepper", "turmeric", "trikatu", "tulsi"],
         "avoid": ["heavy foods", "oily foods", "excess dairy", "sweet foods", "cold desserts", "daytime naps"],

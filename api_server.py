@@ -34,9 +34,35 @@ JWT_ALGORITHM: str = "HS256"
 JWT_EXPIRY_HOURS: int = int(os.getenv("JWT_EXPIRY_HOURS", "24"))
 
 VALID_DOSHAS = {"vata", "pitta", "kapha"}
+MIN_CONSTITUTION_WORDS = 10
+MIN_CONSTITUTION_CHARS = 45
 
 auth_manager = AuthManager()
 brain = None
+
+
+def is_useful_constitution_answer(value: str) -> bool:
+    """Return True when the signup answer has enough real signal to detect dosha."""
+    normalized = " ".join(value.split())
+    if len(normalized) < MIN_CONSTITUTION_CHARS:
+        return False
+    words = [word for word in normalized.split() if any(char.isalpha() for char in word)]
+    if len(words) < MIN_CONSTITUTION_WORDS:
+        return False
+
+    vague_answers = {
+        "i do not know",
+        "i dont know",
+        "don't know",
+        "dont know",
+        "no idea",
+        "not sure",
+        "nothing",
+        "none",
+        "test",
+        "asdf",
+    }
+    return normalized.lower() not in vague_answers
 
 
 def get_allowed_origins() -> list[str]:
@@ -44,6 +70,8 @@ def get_allowed_origins() -> list[str]:
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         r"https://.*\.vercel\.app",
+        r"https://.*\.netlify\.app",
+        r"https://.*\.onrender\.com",
     ]
     origins = os.getenv("CORS_ORIGINS", "").strip()
     if origins:
@@ -193,6 +221,12 @@ def create_app() -> Flask:
         resolved_dosha = selected_dosha if selected_dosha in VALID_DOSHAS else None
 
         if not resolved_dosha and constitution:
+            if not is_useful_constitution_answer(constitution):
+                return jsonify({
+                    "success": False,
+                    "error": "Please describe real body, digestion, sleep, skin, energy, and mood patterns in at least 10 words so dosha detection is not guessed.",
+                }), 400
+
             try:
                 brain_instance = get_brain_instance()
                 resolved_dosha = brain_instance.detect_dosha(constitution)
@@ -205,7 +239,7 @@ def create_app() -> Flask:
         if not resolved_dosha:
             return jsonify({
                 "success": False,
-                "error": "Please select a dosha or describe your constitution so we can detect it first.",
+                "error": "I could not detect a dosha from that answer without guessing. Please add more real details or select Vata, Pitta, or Kapha.",
             }), 400
 
         username = email

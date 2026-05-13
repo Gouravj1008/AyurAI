@@ -51,7 +51,11 @@ export default function Signup() {
       }
 
       if (!dosha && !constitution) {
-        throw new Error('Please choose a dosha or describe your constitution first')
+        throw new Error('Please choose a dosha or answer the constitution question so AI can detect it from real details.')
+      }
+
+      if (!dosha && constitution.split(/\s+/).filter(Boolean).length < 10) {
+        throw new Error('Please write at least 10 words about your body, digestion, sleep, skin, energy, and mood so the dosha is not guessed.')
       }
 
       await signup(name, email, password, dosha, constitution)
@@ -128,26 +132,29 @@ export default function Signup() {
               onChange={handleChange}
               className="input-shell w-full"
             >
-              <option value="">Select your dosha or leave blank if unsure</option>
+              <option value="">I do not know - detect from my answer</option>
               <option value="vata">Vata</option>
               <option value="pitta">Pitta</option>
               <option value="kapha">Kapha</option>
             </select>
             <p className="mt-1 text-xs text-slate-500">
-              If you do not know your dosha, describe your body type and habits below.
+              If you select “I do not know”, AyurAI will detect Vata, Pitta, or Kapha from your real answer below.
             </p>
           </div>
 
           <div className="mb-6">
-            <label className="mb-2 block text-sm font-medium text-slate-700">Constitution Description</label>
+            <label className="mb-2 block text-sm font-medium text-slate-700">Constitution Answer</label>
             <textarea
               name="constitution"
               value={formData.constitution}
               onChange={handleChange}
-              placeholder="Example: I feel cold easily, have dry skin, irregular appetite, and light sleep."
+              placeholder="Example: I feel cold easily, have dry skin, irregular appetite, bloating, restless energy, and light sleep."
               rows="4"
               className="input-shell w-full resize-none"
             />
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Write real patterns: body build, appetite, digestion, temperature, sleep, skin, energy, and mood. Short or fake answers are rejected.
+            </p>
           </div>
 
           <div className="mb-6">
@@ -167,7 +174,7 @@ export default function Signup() {
             disabled={loading}
             className="accent-button w-full px-4 py-3 disabled:opacity-50"
           >
-            {loading ? 'Creating account...' : 'Create Account'}
+            {loading ? 'Creating account...' : formData.dosha ? 'Create Account' : 'Detect Dosha & Create Account'}
           </button>
 
           <div className="mt-4 text-center text-slate-500">
@@ -180,7 +187,7 @@ export default function Signup() {
 
         {/* Footer */}
         <div className="mt-6 text-center text-xs text-slate-500">
-          <p className="mb-3">By signing up, you agree to save your dosha profile for Ayurveda guidance.</p>
+          <p className="mb-3">By signing up, you agree to save your selected or AI-detected dosha profile for Ayurveda guidance.</p>
           <Link to="/" className="hover:text-slate-700">
             Back to Home
           </Link>

@@ -1,19 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import axios from 'axios'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+import { API_BASE_URL, getApiErrorMessage } from '../config/api'
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
 })
-
-const getApiErrorMessage = (error, fallback) => {
-  if (error?.response?.data?.error) return error.response.data.error
-  if (error?.response?.data?.message) return error.response.data.message
-  if (error?.message) return error.message
-  return fallback
-}
 
 export const useAuthStore = create(
   persist(

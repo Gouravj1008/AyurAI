@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 import { useAuthStore } from '../store/authStore'
 import ChatMessage from '../components/ChatMessage'
 import Sidebar from '../components/Sidebar'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+import { API_BASE_URL, getApiErrorMessage } from '../config/api'
 
 export default function Chat() {
   const navigate = useNavigate()
@@ -23,6 +22,13 @@ export default function Chat() {
   const [loading, setLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const messagesEndRef = useRef(null)
+  const doshaSourceLabel = user?.dosha_source === 'signup-detected'
+    ? 'AI-detected from signup answer'
+    : user?.dosha_source === 'signup-selected'
+      ? 'Selected during signup'
+      : user?.dosha_source === 'chat-detected'
+        ? 'AI-detected from chat'
+        : ''
 
   // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = () => {
@@ -76,10 +82,7 @@ export default function Chat() {
       console.error('Chat error:', error)
 
       // Extract a meaningful error from the backend response if available
-      let errorContent =
-        error?.response?.data?.error ||
-        error?.response?.data?.message ||
-        null
+      let errorContent = getApiErrorMessage(error, null)
 
       if (!errorContent) {
         if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
@@ -169,7 +172,9 @@ export default function Chat() {
             </button>
             <div>
               <h1 className="text-lg font-semibold tracking-tight text-slate-950">AyurAI</h1>
-              <p className="text-sm text-slate-500">AI-powered wellness guide</p>
+              <p className="text-sm text-slate-500">
+                {user?.dosha ? `${user.dosha.toUpperCase()} dosha${doshaSourceLabel ? ` - ${doshaSourceLabel}` : ''}` : 'AI-powered wellness guide'}
+              </p>
             </div>
           </div>
           <div className="text-right text-sm text-slate-500">
